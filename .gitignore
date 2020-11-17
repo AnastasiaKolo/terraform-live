@@ -5,3 +5,4 @@
 Notes.txt
 *.lnk
 TF_info/*
+*/.terraform
