@@ -1,13 +1,13 @@
-variable "hero_thousand_faces" {
-  description = "map"
-  type        = map(string)
-  default     = {
-    neo      = "hero"
-    trinity  = "love interest"
-    morpheus = "mentor"
-  }
+variable "names" {
+  description = "Names to render"
+  type        = list(string)
+  default     = ["neo", "trinity", "morpheus"]
 }
 
-output "bios" {
-  value = [for name, role in var.hero_thousand_faces : "${name} is the ${role}"]
+output "for_directive" {
+  value = <<EOF
+%{ for name in var.names }
+  ${name}
+%{ endfor }
+EOF
 }
