@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "webserver_cluster" {
-  source = "github.com/AnastasiaKolo/terraform-modules//services/webserver-cluster?ref=v0.0.3"
+  source = "github.com/AnastasiaKolo/terraform-modules//services/webserver-cluster?ref=v0.0.5"
 
   cluster_name           = "webservers-prod"
   db_remote_state_bucket = "terraform-up-and-running-state-12345"
@@ -13,6 +13,7 @@ module "webserver_cluster" {
   min_size      = 2
   max_size      = 10
   enable_autoscaling   = true
+  enable_new_user_data = false
 
   custom_tags = {
     Owner      = "team-dreamteam"
